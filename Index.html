@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>手机计算器</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-top: 50px;
+			font-size: 30px;
+		}
+		input[type=number] {
+			padding: 10px;
+			margin-bottom: 20px;
+			border-radius: 5px;
+			border: none;
+			width: 80%;
+			font-size: 30px;
+			text-align: center;
+			background-color: #f5f5f5;
+		}
+		.result-container {
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			margin-top: 20px;
+			font-size: 30px;
+		}
+		.result {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			margin-right: 10px;
+		}
+		.result-label {
+			font-size: 20px;
+		}
+		.result-value {
+			font-size: 30px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<input type="number" id="input1" placeholder="输入数字1">
+		<input type="number" id="input2" placeholder="输入数字2">
+		<input type="number" id="input3" placeholder="输入数字3">
+		<div class="result-container">
+			<div class="result">
+				<div class="result-label">结果1：</div>
+				<div class="result-value" id="result1"></div>
+			</div>
+			<div class="result">
+				<div class="result-label">结果2：</div>
+				<div class="result-value" id="result2"></div>
+			</div>
+			<div class="result">
+				<div class="result-label">结果3：</div>
+				<div class="result-value" id="result3"></div>
+			</div>
+		</div>
+	</div>
+	<script>
+		const input1 = document.getElementById("input1");
+		const input2 = document.getElementById("input2");
+		const input3 = document.getElementById("input3");
+		const result1 = document.getElementById("result1");
+		const result2 = document.getElementById("result2");
+		const result3 = document.getElementById("result3");
+
+		input1.addEventListener("input", updateResults);
+		input2.addEventListener("input", updateResults);
+		input3.addEventListener("input", updateResults);
+
+		function updateResults() {
+			const num1 = Number(input1.value);
+			const num2 = Number(input2.value);
+			const num3 = Number(input3.value);
+
+			const res1 = num1 / num2;
+			const res2 = num1 / num3;
+			const res3 = res1 - res2;
+
+			result1.textContent = Math.floor(res1);
+			result2.textContent = Math.floor(res2);
+			result3.textContent = Math.floor(res3);
+		}
+	</script>
+</body>
+</html>
